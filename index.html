@@ -5,128 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📺 Lista IPTV</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #0d0d0d;
-            color: #fff;
-        }
-        h1 {
-            color: #1a73e8;
-            text-align: center;
-            border-bottom: 2px solid #1a73e8;
-            padding-bottom: 10px;
-        }
-        .info {
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 4px solid #1a73e8;
-            text-align: center;
-        }
-        .passo {
-            background: #222;
-            padding: 12px 18px;
-            border-radius: 8px;
-            margin: 10px 0;
-            line-height: 1.8;
-        }
-        .passo strong {
-            color: #4fc3f7;
-        }
-        .url-box {
-            background: #0d0d0d;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #333;
-            word-break: break-all;
-            font-family: monospace;
-            margin: 10px 0;
-            text-align: center;
-            font-size: 13px;
-            color: #4fc3f7;
-        }
-        .btn {
-            display: inline-block;
-            background: #1a73e8;
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin: 10px 5px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .btn:hover {
-            background: #1557b0;
-        }
-        .btn-verde {
-            background: #34a853;
-        }
-        .btn-verde:hover {
-            background: #2d8f47;
-        }
-        .canal {
-            background: #1a1a1a;
-            padding: 8px 15px;
-            margin: 4px 0;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            color: #ccc;
-            font-size: 14px;
-        }
-        .canal .status {
-            color: #34a853;
-            font-size: 12px;
-        }
-        .footer {
-            margin-top: 30px;
-            color: #888;
-            font-size: 13px;
-            text-align: center;
-        }
-        .badge {
-            background: #1a73e8;
-            color: #fff;
-            border-radius: 12px;
-            padding: 2px 10px;
-            font-size: 12px;
-        }
-        .dica {
-            background: #1a1a1a;
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 15px;
-            text-align: center;
-            border: 1px dashed #555;
-        }
-        .aviso {
-            background: #2a1a1a;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 15px 0;
-            text-align: center;
-            border-left: 4px solid #e8a317;
-            color: #e8a317;
-        }
+        body { font-family: Arial; max-width: 800px; margin: 20px auto; padding: 20px; background: #0d0d0d; color: #fff; }
+        h1 { color: #1a73e8; text-align: center; border-bottom: 2px solid #1a73e8; padding-bottom: 10px; }
+        .info { background: #1a1a1a; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #1a73e8; text-align: center; }
+        .passo { background: #222; padding: 12px 18px; border-radius: 8px; margin: 10px 0; line-height: 1.8; }
+        .passo strong { color: #4fc3f7; }
+        .url-box { background: #0d0d0d; padding: 12px; border-radius: 6px; border: 1px solid #333; word-break: break-all; font-family: monospace; margin: 10px 0; text-align: center; font-size: 13px; color: #4fc3f7; }
+        .btn { display: inline-block; background: #1a73e8; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 10px 5px; font-weight: bold; border: none; cursor: pointer; font-size: 14px; }
+        .btn:hover { background: #1557b0; }
+        .btn-verde { background: #34a853; }
+        .btn-verde:hover { background: #2d8f47; }
+        .canal { background: #1a1a1a; padding: 8px 15px; margin: 4px 0; border-radius: 6px; display: flex; justify-content: space-between; color: #ccc; font-size: 14px; }
+        .canal .status { color: #34a853; font-size: 12px; }
+        .canal .status-off { color: #e8a317; font-size: 12px; }
+        .footer { margin-top: 30px; color: #888; font-size: 13px; text-align: center; }
+        .badge { background: #1a73e8; color: #fff; border-radius: 12px; padding: 2px 10px; font-size: 12px; }
+        .dica { background: #1a1a1a; padding: 12px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px dashed #555; }
+        .aviso { background: #1a2a1a; padding: 12px; border-radius: 8px; margin: 15px 0; text-align: center; border-left: 4px solid #34a853; }
+        .aviso-off { background: #2a1a1a; padding: 12px; border-radius: 8px; margin: 15px 0; text-align: center; border-left: 4px solid #e8a317; }
     </style>
 </head>
 <body>
 
     <h1>📺 Lista IPTV</h1>
 
-    <div class="info">
-        ⚡ <strong>Lista em formato M3U8 — importa na tua app IPTV (XCIPTV, TiviMate, VLC, etc.)</strong>
+    <div class="aviso">
+        ⚽ <strong>Sport TV incluída!</strong> Lista com todos os canais em M3U8.
     </div>
 
-    <div class="aviso">
-        ⚠️ Canais como Sport TV, TVCine e Secret Story não têm streams gratuitos M3U8 (são pagos).
+    <div class="aviso-off">
+        ⚠️ <strong>Aviso:</strong> A Sport TV não tem streams oficiais M3U8. Os links são os que me deste (formato TS). Podem funcionar na XCIPTV.
+    </div>
+
+    <div class="info">
+        ⚡ <strong>Lista em formato M3U8 — importa na tua app IPTV</strong>
     </div>
 
     <div class="passo">
@@ -136,12 +48,10 @@
         3. Os canais vão aparecer automaticamente! ✅
     </div>
 
-    <!-- URL da lista -->
     <div class="url-box" id="urlLista">
         https://raw.githubusercontent.com/u0872842490-pixel/lista-iptv/main/canais.m3u
     </div>
 
-    <!-- Botões -->
     <div style="text-align:center; margin: 20px 0;">
         <a href="canais.m3u" class="btn" download>📥 Baixar lista M3U</a>
         <a href="#" class="btn btn-verde" id="copiarUrl">📋 Copiar URL</a>
@@ -160,38 +70,29 @@
     </div>
 
     <script>
-        // Lista de nomes dos canais (atualizada com os M3U8)
         const canais = [
-            "RTP 1", "RTP 2", "SIC", "TVI",
-            "RTP 1 HD", "RTP 2 HD",
-            "RTP Memória", "RTP África", "RTP Açores", "RTP Madeira",
-            "Porto Canal",
-            "SIC Mulher", "SIC Radical", "SIC Caras", "Canal Q",
-            "TVI Ficção", "TVI Reality",
-            "CMTV",
-            "Benfica TV 1", "Benfica TV 2",
-            "Sporting TV", "ABOLA TV",
-            "Eurosport 1 HD", "Eurosport 2 HD",
-            "CNN Portugal", "SIC Notícias", "TVI 24"
+            "RTP 1", "RTP 2", "SIC", "TVI", "RTP 1 HD",
+            "Secret Story 5", "ETV HD", "SIC Mulher", "SIC Radical",
+            "+TVI", "SIC Caras", "Canal Q", "Porto Canal",
+            "RTP Memória", "RTP África", "RTP Madeira", "RTP Açores",
+            "AR TV", "Sport TV 1 HD", "Sport TV 2 HD", "Sport TV 4 HD",
+            "Sport TV 1", "Sport TV 2", "Sport TV 3", "Sport TV 4",
+            "Sport TV 5", "BTV 1", "BTV 2 HD", "BTV 2"
         ];
 
-        // Mostrar lista
         const container = document.getElementById('listaCanais');
         canais.forEach(nome => {
             const div = document.createElement('div');
             div.className = 'canal';
-            div.innerHTML = <span>📺 ${nome}</span><span class="status">✅ M3U8</span>;
+            const isSport = nome.includes('Sport TV');
+            div.innerHTML = <span>📺 ${nome}</span><span class="${isSport ? 'status-off' : 'status'}">${isSport ? '⚠️ TS (testar)' : '✅ M3U8'}</span>;
             container.appendChild(div);
         });
 
-        // Contadores
         document.getElementById('contador').textContent = canais.length;
         document.getElementById('totalCanais').textContent = canais.length;
-
-        // Data
         document.getElementById('data').textContent = new Date().toLocaleDateString('pt-PT');
 
-        // Função copiar URL
         document.getElementById('copiarUrl').addEventListener('click', function(e) {
             e.preventDefault();
             const url = document.getElementById('urlLista').textContent;
