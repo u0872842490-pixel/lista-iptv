@@ -32,7 +32,7 @@
             padding: 12px 18px;
             border-radius: 8px;
             margin: 10px 0;
-            line-height: 1.6;
+            line-height: 1.8;
         }
         .passo strong {
             color: #4fc3f7;
@@ -46,7 +46,7 @@
             font-family: monospace;
             margin: 10px 0;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             color: #4fc3f7;
         }
         .btn {
@@ -58,6 +58,9 @@
             text-decoration: none;
             margin: 10px 5px;
             font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
         }
         .btn:hover {
             background: #1557b0;
@@ -76,6 +79,11 @@
             display: flex;
             justify-content: space-between;
             color: #ccc;
+            font-size: 14px;
+        }
+        .canal .status {
+            color: #34a853;
+            font-size: 12px;
         }
         .footer {
             margin-top: 30px;
@@ -90,6 +98,23 @@
             padding: 2px 10px;
             font-size: 12px;
         }
+        .dica {
+            background: #1a1a1a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            border: 1px dashed #555;
+        }
+        .aviso {
+            background: #2a1a1a;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            border-left: 4px solid #e8a317;
+            color: #e8a317;
+        }
     </style>
 </head>
 <body>
@@ -97,14 +122,18 @@
     <h1>📺 Lista IPTV</h1>
 
     <div class="info">
-        ⚡ <strong>Importa a lista na tua app IPTV (XCIPTV, TiviMate, etc.) usando o URL abaixo.</strong>
+        ⚡ <strong>Lista em formato M3U8 — importa na tua app IPTV (XCIPTV, TiviMate, VLC, etc.)</strong>
+    </div>
+
+    <div class="aviso">
+        ⚠️ Canais como Sport TV, TVCine e Secret Story não têm streams gratuitos M3U8 (são pagos).
     </div>
 
     <div class="passo">
         <strong>📱 Como usar na XCIPTV:</strong><br>
         1. Abre a app e escolhe <strong>"Adicionar Playlist"</strong> ou <strong>"M3U URL"</strong>.<br>
         2. Cola o URL abaixo e guarda.<br>
-        3. Os canais vão aparecer automaticamente!
+        3. Os canais vão aparecer automaticamente! ✅
     </div>
 
     <!-- URL da lista -->
@@ -118,6 +147,10 @@
         <a href="#" class="btn btn-verde" id="copiarUrl">📋 Copiar URL</a>
     </div>
 
+    <div class="dica">
+        💡 Depois de copiar o URL, abre a XCIPTV, cola e guarda. Os canais carregam em segundos!
+    </div>
+
     <h2>📋 Canais disponíveis <span class="badge" id="contador"></span></h2>
     <div id="listaCanais"></div>
 
@@ -127,15 +160,19 @@
     </div>
 
     <script>
-        // Lista de nomes dos canais (mantém sincronizada com o ficheiro M3U)
+        // Lista de nomes dos canais (atualizada com os M3U8)
         const canais = [
-            "RTP 1", "RTP 2", "SIC", "TVI", "RTP 1 HD",
-            "Secret Story 5", "ETV HD", "SIC Mulher", "SIC Radical",
-            "+TVI", "SIC Caras", "Canal Q", "Porto Canal",
-            "RTP Memória", "RTP África", "RTP Madeira", "RTP Açores",
-            "AR TV", "Sport TV 1 HD", "Sport TV 2 HD", "Sport TV 4 HD",
-            "Sport TV 1", "Sport TV 2", "Sport TV 3", "Sport TV 4",
-            "Sport TV 5", "BTV 1", "BTV 2 HD", "BTV 2"
+            "RTP 1", "RTP 2", "SIC", "TVI",
+            "RTP 1 HD", "RTP 2 HD",
+            "RTP Memória", "RTP África", "RTP Açores", "RTP Madeira",
+            "Porto Canal",
+            "SIC Mulher", "SIC Radical", "SIC Caras", "Canal Q",
+            "TVI Ficção", "TVI Reality",
+            "CMTV",
+            "Benfica TV 1", "Benfica TV 2",
+            "Sporting TV", "ABOLA TV",
+            "Eurosport 1 HD", "Eurosport 2 HD",
+            "CNN Portugal", "SIC Notícias", "TVI 24"
         ];
 
         // Mostrar lista
@@ -143,7 +180,7 @@
         canais.forEach(nome => {
             const div = document.createElement('div');
             div.className = 'canal';
-            div.innerHTML = <span>📺 ${nome}</span><span style="color:#555;font-size:13px;">(usar na app IPTV)</span>;
+            div.innerHTML = <span>📺 ${nome}</span><span class="status">✅ M3U8</span>;
             container.appendChild(div);
         });
 
@@ -161,7 +198,6 @@
             navigator.clipboard.writeText(url).then(() => {
                 alert('✅ URL copiado! Cola na tua app IPTV.');
             }).catch(() => {
-                // fallback
                 const area = document.createElement('textarea');
                 area.value = url;
                 document.body.appendChild(area);
